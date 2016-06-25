@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "getwd()\nx <- read.csv(\"chickweights.csv\")\nhea",
+    "created" : 1466864438546.000,
+    "dirty" : true,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "1681144754",
+    "id" : "FB49DCA8",
+    "lastKnownWriteTime" : 3419473789575321445,
+    "last_content_update" : 1466865019579,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

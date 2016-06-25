@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "weight,feed\n179,horsebean\n160,horsebean\n136,horsebean\n227,horsebean\n217,horsebean\n168,horsebean\n108,horsebean\n124,horsebean\n143,horsebean\n140,horsebean\n309,linseed\n229,linseed\n181,linseed\n141,linseed\n260,linseed\n203,linseed\n148,linseed\n169,linseed\n213,linseed\n257,linseed\n244,linseed\n271,linseed\n243,soybean\n230,soybean\n248,soybean\n327,soybean\n329,soybean\n250,soybean\n193,soybean\n271,soybean\n316,soybean\n267,soybean\n199,soybean\n171,soybean\n158,soybean\n248,soybean\n423,sunflower\n340,sunflower\n392,sunflower\n339,sunflower\n341,sunflower\n226,sunflower\n320,sunflower\n295,sunflower\n334,sunflower\n322,sunflower\n297,sunflower\n318,sunflower\n325,meatmeal\n257,meatmeal\n303,meatmeal\n315,meatmeal\n380,meatmeal\n153,meatmeal\n263,meatmeal\n242,meatmeal\n206,meatmeal\n344,meatmeal\n258,meatmeal\n368,casein\n390,casein\n379,casein\n260,casein\n404,casein\n318,casein\n352,casein\n359,casein\n216,casein\n222,casein\n283,casein\n332,casein\n",
+    "created" : 1466864963511.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2797184629",
+    "id" : "677D687C",
+    "lastKnownWriteTime" : 1466737117,
+    "last_content_update" : 1466737117,
+    "path" : "~/STATS STUFF/Assignment 4/Data Set 1/Assignment 4 Data Set 1/chickweights.csv",
+    "project_path" : "chickweights.csv",
+    "properties" : {
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "text"
+}
