@@ -1,0 +1,683 @@
+ get wd
+Error: unexpected symbol in "get wd"
+> getwd()
+[1] "C:/Users/BonGanI_2/Documents/STATS STUFF/Assignment 4/Data Set 2/Ass 4 data set 2"
+> ls
+function (name, pos = -1L, envir = as.environment(pos), all.names = FALSE, 
+    pattern, sorted = TRUE) 
+{
+    if (!missing(name)) {
+        pos <- tryCatch(name, error = function(e) e)
+        if (inherits(pos, "error")) {
+            name <- substitute(name)
+            if (!is.character(name)) 
+                name <- deparse(name)
+            warning(gettextf("%s converted to character string", 
+                sQuote(name)), domain = NA)
+            pos <- name
+        }
+    }
+    all.names <- .Internal(ls(envir, all.names, sorted))
+    if (!missing(pattern)) {
+        if ((ll <- length(grep("[", pattern, fixed = TRUE))) && 
+            ll != length(grep("]", pattern, fixed = TRUE))) {
+            if (pattern == "[") {
+                pattern <- "\\["
+                warning("replaced regular expression pattern '[' by  '\\\\['")
+            }
+            else if (length(grep("[^\\\\]\\[<-", pattern))) {
+                pattern <- sub("\\[<-", "\\\\\\[<-", pattern)
+                warning("replaced '[<-' by '\\\\[<-' in regular expression pattern")
+            }
+        }
+        grep(pattern, all.names, value = TRUE)
+    }
+    else all.names
+}
+<bytecode: 0x000000000c6bdb18>
+<environment: namespace:base>
+> ls()
+character(0)
+> ls()
+character(0)
+> list.files
+function (path = ".", pattern = NULL, all.files = FALSE, full.names = FALSE, 
+    recursive = FALSE, ignore.case = FALSE, include.dirs = FALSE, 
+    no.. = FALSE) 
+.Internal(list.files(path, pattern, all.files, full.names, recursive, 
+    ignore.case, include.dirs, no..))
+<bytecode: 0x000000000e941fc0>
+<environment: namespace:base>
+> list.files()
+[1] "Ass 4 data set 2.Rproj" "blood-pressure.csv"    
+> file.rename("blood-pressure.csv", "bp.csv")
+[1] TRUE
+> view(bp.csv)
+Error: could not find function "view"
+> bp <- read.csv("bp.csv")
+> View(bp)
+> qplot(x = Method,)
+Error: could not find function "qplot"
+> qplot(x == Method,
++       y == SBP.replicate.1,)
+Error: could not find function "qplot"
+> qplot(x == Method,
++       y == SBP.replicate.1,
++       data == bp)
+Error: could not find function "qplot"
+> library(tidyr)
+Warning message:
+package ‘tidyr’ was built under R version 3.3.1 
+> library(dplyr)
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+Warning message:
+package ‘dplyr’ was built under R version 3.3.1 
+> library(ggplot2)
+Warning message:
+package ‘ggplot2’ was built under R version 3.3.1 
+> qplot(x == Method,
++       y == SBP.replicate.1,
++       data == bp)
+Error: Unknown parameters: NA
+> qplot(x == "Method",
++       y == "SBP.replicate.1",
++       data == bp)
+Error: Unknown parameters: NA
+> qplot(x == "Subject",
++       y == "SBP.replicate.1",
++       data == bp)
+Error: Unknown parameters: NA
+> qplot(x == Subject,
++       y == SBP.replicate.1,
++       data == bp)
+Error: Unknown parameters: NA
+> qplot(x = Subject,
++       y = SBP.replicate.1,
++       data = bp)
+> qplot(x = Method,
++       y = SBP.replicate.1,
++       data = bp)
+> bp2 <- mutate(bp, SBP_avg = (SBP.replicate.1 + SBP.replicate.2 + SBP.replicate.3)/3*100)
+> View(bp2)
+> rm(bp2)
+> bp2 <- mutate(bp, SBP_avg = mean(SBP.replicate.1, SBP.replicate.2, SBP.replicate.3))
+Error: 'trim' must be numeric of length one
+In addition: Warning message:
+In if (na.rm) x <- x[!is.na(x)] :
+  the condition has length > 1 and only the first element will be used
+> ?mean
+> qplot(x = Subject,
++       y = SBP.replicate.1,
++       data = bp,
++ qplot(x = Subject,
++       y = SBP.replicate.1,
++       data = bp,
++       color = Nurse)
++ qplot(x = Subject,
+Error: unexpected symbol in:
+"      color = Nurse)
+qplot"
+>       y = SBP.replicate.1,
+Error: unexpected ',' in "      y = SBP.replicate.1,"
+>       data = bp,
+Error: unexpected ',' in "      data = bp,"
+>       color = Nurse)
+Error: unexpected ')' in "      color = Nurse)"
+> boxplot(bp$Method)
+Error in boxplot.default(bp$Method) : 
+  adding class "factor" to an invalid object
+> boxplot(bp$Method~bp$SBP.replicate.1)
+Error in boxplot.default(split(mf[[response]], mf[-response]), ...) : 
+  adding class "factor" to an invalid object
+> boxplot(bp$Subject~bp$SBP.replicate.1)
+> plot(bp$Subject~bp$SBP.replicate.1)
+> plot(bp$Subject~bp$SBP.replicate.1,
++      col = "red")
+> ?facet
+> plot(bp$SBP.replicate.1~bp$Subject,
++      col = "red")
+> bp2 <- mutate(bp, SBP_avg = mean(SBP.replicate.1:SBP.replicate.3))
+Warning messages:
+1: In c(100L, 108L, 76L, 108L, 124L, 122L, 116L, 114L, 100L, 108L,  :
+  numerical expression has 170 elements: only the first used
+2: In c(100L, 108L, 76L, 108L, 124L, 122L, 116L, 114L, 100L, 108L,  :
+  numerical expression has 170 elements: only the first used
+> bp3 <- select(bp2, Method, Subject, SBP_avg)
+> View(bp3)
+> plot(bp3$Subject~bp3$SBP_avg,
++      col = "blue")
+> plot(bp3$SBP_avg~bp3$Subject,
++      col = "blue")
+> View(bp2)
+> rm(bp2,bp3)
+> View(bp)
+> mutate(bp, SBP_avg = ((SBP.replicate.1 + SBP.replicate.2 + SBP.replicate.3)/3))
+    Method Subject SBP.replicate.1 SBP.replicate.2 SBP.replicate.3   SBP_avg
+1    Nurse       1             100             106             107 104.33333
+2    Nurse       2             108             110             108 108.66667
+3    Nurse       3              76              84              82  80.66667
+4    Nurse       4             108             104             104 105.33333
+5    Nurse       5             124             112             112 116.00000
+6    Nurse       6             122             140             124 128.66667
+7    Nurse       7             116             108             102 108.66667
+8    Nurse       8             114             110             112 112.00000
+9    Nurse       9             100             108             112 106.66667
+10   Nurse      10             108              92             100 100.00000
+11   Nurse      11             100             106             104 103.33333
+12   Nurse      12             108             112             122 114.00000
+13   Nurse      13             112             112             110 111.33333
+14   Nurse      14             104             108             104 105.33333
+15   Nurse      15             106             108             102 105.33333
+16   Nurse      16             122             122             114 119.33333
+17   Nurse      17             100             102             102 101.33333
+18   Nurse      18             118             118             120 118.66667
+19   Nurse      19             140             134             138 137.33333
+20   Nurse      20             150             148             144 147.33333
+21   Nurse      21             166             154             154 158.00000
+22   Nurse      22             148             156             134 146.00000
+23   Nurse      23             174             172             166 170.66667
+24   Nurse      24             174             166             150 163.33333
+25   Nurse      25             140             144             144 142.66667
+26   Nurse      26             128             134             130 130.66667
+27   Nurse      27             146             138             140 141.33333
+28   Nurse      28             146             152             148 148.66667
+29   Nurse      29             220             218             220 219.33333
+30   Nurse      30             208             200             192 200.00000
+31   Nurse      31              94              84              86  88.00000
+32   Nurse      32             114             124             116 118.00000
+33   Nurse      33             126             120             122 122.66667
+34   Nurse      34             124             124             132 126.66667
+35   Nurse      35             110             120             128 119.33333
+36   Nurse      36              90              90              94  91.33333
+37   Nurse      37             106             106             110 107.33333
+38   Nurse      38             218             202             208 209.33333
+39   Nurse      39             130             128             130 129.33333
+40   Nurse      40             136             136             130 134.00000
+41   Nurse      41             100              96              88  94.66667
+42   Nurse      42             100              98              88  95.33333
+43   Nurse      43             124             116             122 120.66667
+44   Nurse      44             164             168             154 162.00000
+45   Nurse      45             100             102             100 100.66667
+46   Nurse      46             136             126             122 128.00000
+47   Nurse      47             114             108             122 114.66667
+48   Nurse      48             148             120             132 133.33333
+49   Nurse      49             160             150             148 152.66667
+50   Nurse      50              84              92              98  91.33333
+51   Nurse      51             156             162             152 156.66667
+52   Nurse      52             110              98              98 102.00000
+53   Nurse      53             100             106             106 104.00000
+54   Nurse      54             100             102              94  98.66667
+55   Nurse      55              86              74              76  78.66667
+56   Nurse      56             106             100             110 105.33333
+57   Nurse      57             108             110             106 108.00000
+58   Nurse      58             168             188             178 178.00000
+59   Nurse      59             166             150             154 156.66667
+60   Nurse      60             146             142             132 140.00000
+61   Nurse      61             204             198             188 196.66667
+62   Nurse      62              96              94              86  92.00000
+63   Nurse      63             134             126             124 128.00000
+64   Nurse      64             138             144             140 140.66667
+65   Nurse      65             134             136             142 137.33333
+66   Nurse      66             156             160             154 156.66667
+67   Nurse      67             124             138             138 133.33333
+68   Nurse      68             114             110             114 112.66667
+69   Nurse      69             112             116             122 116.66667
+70   Nurse      70             112             116             134 120.66667
+71   Nurse      71             202             220             228 216.66667
+72   Nurse      72             132             136             134 134.00000
+73   Nurse      73             158             162             152 157.33333
+74   Nurse      74              88              76              88  84.00000
+75   Nurse      75             170             174             176 173.33333
+76   Nurse      76             182             176             180 179.33333
+77   Nurse      77             112             114             124 116.66667
+78   Nurse      78             120             118             120 119.33333
+79   Nurse      79             110             108             106 108.00000
+80   Nurse      80             112             112             106 110.00000
+81   Nurse      81             154             134             130 139.33333
+82   Nurse      82             116             112              94 107.33333
+83   Nurse      83             108             110             114 110.66667
+84   Nurse      84             106              98             100 101.33333
+85   Nurse      85             122             112             112 115.33333
+86  Device       1             122             128             124 124.66667
+87  Device       2             121             127             128 125.33333
+88  Device       3              95              94              98  95.66667
+89  Device       4             127             127             135 129.66667
+90  Device       5             140             131             124 131.66667
+91  Device       6             139             142             136 139.00000
+92  Device       7             122             112             112 115.33333
+93  Device       8             130             129             135 131.33333
+94  Device       9             119             122             122 121.00000
+95  Device      10             126             113             111 116.66667
+96  Device      11             107             113             111 110.33333
+97  Device      12             123             125             125 124.33333
+98  Device      13             131             129             122 127.33333
+99  Device      14             123             126             114 121.00000
+100 Device      15             127             119             126 124.00000
+101 Device      16             142             133             137 137.33333
+102 Device      17             104             116             115 111.66667
+103 Device      18             117             113             112 114.00000
+104 Device      19             139             127             113 126.33333
+105 Device      20             143             155             133 143.66667
+106 Device      21             181             170             166 172.33333
+107 Device      22             149             156             140 148.33333
+108 Device      23             173             170             154 165.66667
+109 Device      24             160             155             170 161.66667
+110 Device      25             158             152             154 154.66667
+111 Device      26             139             144             141 141.33333
+112 Device      27             153             150             154 152.33333
+113 Device      28             138             144             131 137.66667
+114 Device      29             228             228             226 227.33333
+115 Device      30             190             183             184 185.66667
+116 Device      31             103              99             106 102.66667
+117 Device      32             131             131             124 128.66667
+118 Device      33             131             123             124 126.00000
+119 Device      34             126             129             125 126.66667
+120 Device      35             121             114             125 120.00000
+121 Device      36              97              94              96  95.66667
+122 Device      37             116             121             127 121.33333
+123 Device      38             215             201             207 207.66667
+124 Device      39             141             133             146 140.00000
+125 Device      40             153             143             138 144.66667
+126 Device      41             113             107             102 107.33333
+127 Device      42             109             105              97 103.66667
+128 Device      43             145             102             137 128.00000
+129 Device      44             192             178             171 180.33333
+130 Device      45             112             116             116 114.66667
+131 Device      46             152             144             147 147.66667
+132 Device      47             141             141             137 139.66667
+133 Device      48             206             188             166 186.66667
+134 Device      49             151             147             136 144.66667
+135 Device      50             112             125             124 120.33333
+136 Device      51             162             165             189 172.00000
+137 Device      52             117             118             109 114.66667
+138 Device      53             119             131             124 124.66667
+139 Device      54             136             116             113 121.66667
+140 Device      55             112             115             104 110.33333
+141 Device      56             120             118             132 123.33333
+142 Device      57             117             118             115 116.66667
+143 Device      58             194             191             196 193.66667
+144 Device      59             167             160             161 162.66667
+145 Device      60             173             161             154 162.66667
+146 Device      61             228             218             189 211.66667
+147 Device      62              77              89             101  89.00000
+148 Device      63             154             156             141 150.33333
+149 Device      64             154             155             148 152.33333
+150 Device      65             145             154             166 155.00000
+151 Device      66             200             180             179 186.33333
+152 Device      67             188             147             139 158.00000
+153 Device      68             149             217             192 186.00000
+154 Device      69             136             132             133 133.66667
+155 Device      70             128             125             142 131.66667
+156 Device      71             204             222             224 216.66667
+157 Device      72             184             187             192 187.66667
+158 Device      73             163             160             152 158.33333
+159 Device      74              93              88              88  89.66667
+160 Device      75             178             181             181 180.00000
+161 Device      76             202             199             195 198.66667
+162 Device      77             162             166             148 158.66667
+163 Device      78             227             227             219 224.33333
+164 Device      79             133             127             126 128.66667
+165 Device      80             202             190             213 201.66667
+166 Device      81             158             121             134 137.66667
+167 Device      82             124             149             137 136.66667
+168 Device      83             114             118             126 119.33333
+169 Device      84             137             135             134 135.33333
+170 Device      85             121             123             128 124.00000
+> bp2 <- mutate(bp, SBP_avg = ((SBP.replicate.1 + SBP.replicate.2 + SBP.replicate.3)/3))
+> View(bp2)
+> bp3 <- select(bp2, Method, Subject, SBP_avg)
+> bp3
+    Method Subject   SBP_avg
+1    Nurse       1 104.33333
+2    Nurse       2 108.66667
+3    Nurse       3  80.66667
+4    Nurse       4 105.33333
+5    Nurse       5 116.00000
+6    Nurse       6 128.66667
+7    Nurse       7 108.66667
+8    Nurse       8 112.00000
+9    Nurse       9 106.66667
+10   Nurse      10 100.00000
+11   Nurse      11 103.33333
+12   Nurse      12 114.00000
+13   Nurse      13 111.33333
+14   Nurse      14 105.33333
+15   Nurse      15 105.33333
+16   Nurse      16 119.33333
+17   Nurse      17 101.33333
+18   Nurse      18 118.66667
+19   Nurse      19 137.33333
+20   Nurse      20 147.33333
+21   Nurse      21 158.00000
+22   Nurse      22 146.00000
+23   Nurse      23 170.66667
+24   Nurse      24 163.33333
+25   Nurse      25 142.66667
+26   Nurse      26 130.66667
+27   Nurse      27 141.33333
+28   Nurse      28 148.66667
+29   Nurse      29 219.33333
+30   Nurse      30 200.00000
+31   Nurse      31  88.00000
+32   Nurse      32 118.00000
+33   Nurse      33 122.66667
+34   Nurse      34 126.66667
+35   Nurse      35 119.33333
+36   Nurse      36  91.33333
+37   Nurse      37 107.33333
+38   Nurse      38 209.33333
+39   Nurse      39 129.33333
+40   Nurse      40 134.00000
+41   Nurse      41  94.66667
+42   Nurse      42  95.33333
+43   Nurse      43 120.66667
+44   Nurse      44 162.00000
+45   Nurse      45 100.66667
+46   Nurse      46 128.00000
+47   Nurse      47 114.66667
+48   Nurse      48 133.33333
+49   Nurse      49 152.66667
+50   Nurse      50  91.33333
+51   Nurse      51 156.66667
+52   Nurse      52 102.00000
+53   Nurse      53 104.00000
+54   Nurse      54  98.66667
+55   Nurse      55  78.66667
+56   Nurse      56 105.33333
+57   Nurse      57 108.00000
+58   Nurse      58 178.00000
+59   Nurse      59 156.66667
+60   Nurse      60 140.00000
+61   Nurse      61 196.66667
+62   Nurse      62  92.00000
+63   Nurse      63 128.00000
+64   Nurse      64 140.66667
+65   Nurse      65 137.33333
+66   Nurse      66 156.66667
+67   Nurse      67 133.33333
+68   Nurse      68 112.66667
+69   Nurse      69 116.66667
+70   Nurse      70 120.66667
+71   Nurse      71 216.66667
+72   Nurse      72 134.00000
+73   Nurse      73 157.33333
+74   Nurse      74  84.00000
+75   Nurse      75 173.33333
+76   Nurse      76 179.33333
+77   Nurse      77 116.66667
+78   Nurse      78 119.33333
+79   Nurse      79 108.00000
+80   Nurse      80 110.00000
+81   Nurse      81 139.33333
+82   Nurse      82 107.33333
+83   Nurse      83 110.66667
+84   Nurse      84 101.33333
+85   Nurse      85 115.33333
+86  Device       1 124.66667
+87  Device       2 125.33333
+88  Device       3  95.66667
+89  Device       4 129.66667
+90  Device       5 131.66667
+91  Device       6 139.00000
+92  Device       7 115.33333
+93  Device       8 131.33333
+94  Device       9 121.00000
+95  Device      10 116.66667
+96  Device      11 110.33333
+97  Device      12 124.33333
+98  Device      13 127.33333
+99  Device      14 121.00000
+100 Device      15 124.00000
+101 Device      16 137.33333
+102 Device      17 111.66667
+103 Device      18 114.00000
+104 Device      19 126.33333
+105 Device      20 143.66667
+106 Device      21 172.33333
+107 Device      22 148.33333
+108 Device      23 165.66667
+109 Device      24 161.66667
+110 Device      25 154.66667
+111 Device      26 141.33333
+112 Device      27 152.33333
+113 Device      28 137.66667
+114 Device      29 227.33333
+115 Device      30 185.66667
+116 Device      31 102.66667
+117 Device      32 128.66667
+118 Device      33 126.00000
+119 Device      34 126.66667
+120 Device      35 120.00000
+121 Device      36  95.66667
+122 Device      37 121.33333
+123 Device      38 207.66667
+124 Device      39 140.00000
+125 Device      40 144.66667
+126 Device      41 107.33333
+127 Device      42 103.66667
+128 Device      43 128.00000
+129 Device      44 180.33333
+130 Device      45 114.66667
+131 Device      46 147.66667
+132 Device      47 139.66667
+133 Device      48 186.66667
+134 Device      49 144.66667
+135 Device      50 120.33333
+136 Device      51 172.00000
+137 Device      52 114.66667
+138 Device      53 124.66667
+139 Device      54 121.66667
+140 Device      55 110.33333
+141 Device      56 123.33333
+142 Device      57 116.66667
+143 Device      58 193.66667
+144 Device      59 162.66667
+145 Device      60 162.66667
+146 Device      61 211.66667
+147 Device      62  89.00000
+148 Device      63 150.33333
+149 Device      64 152.33333
+150 Device      65 155.00000
+151 Device      66 186.33333
+152 Device      67 158.00000
+153 Device      68 186.00000
+154 Device      69 133.66667
+155 Device      70 131.66667
+156 Device      71 216.66667
+157 Device      72 187.66667
+158 Device      73 158.33333
+159 Device      74  89.66667
+160 Device      75 180.00000
+161 Device      76 198.66667
+162 Device      77 158.66667
+163 Device      78 224.33333
+164 Device      79 128.66667
+165 Device      80 201.66667
+166 Device      81 137.66667
+167 Device      82 136.66667
+168 Device      83 119.33333
+169 Device      84 135.33333
+170 Device      85 124.00000
+> View(bp3)
+> ?plot
+> plot(bp3$Subject,)
+> plot(x = bp3$Subject,
++      y = bp3$SBP_avg)
+> plot(x = bp3$Subject,
++      y = bp3$SBP_avg,
++      col = Nurse)
+Error in plot.xy(xy, type, ...) : object 'Nurse' not found
+> plot(x = bp3$Subject,
++      y = bp3$SBP_avg,
++      col = bp3$Method)
+> boxplot(bp3$SBP_avg~bp3$Method,
++         col = bp3$Method)
+> boxplot(bp3$SBP_avg~bp3$Method,
++         col = bp3$Method,
++         xlab = Measurement Method,
+Error: unexpected symbol in:
+"        col = bp3$Method,
+        xlab = Measurement Method"
+>         ylab = Average SBP (mmHg),
+Error: unexpected symbol in "        ylab = Average SBP"
+>         main = "Boxplot comparing systolic blood pressure (SBP) readings obtained via automation and manual application.")
+Error: unexpected ')' in "        main = "Boxplot comparing systolic blood pressure (SBP) readings obtained via automation and manual application.")"
+> boxplot(bp3$SBP_avg~bp3$Method,
++         col = bp3$Method,
++         xlab = Measurement Method,
+Error: unexpected symbol in:
+"        col = bp3$Method,
+        xlab = Measurement Method"
+>         ylab = Average SBP (mmHg),
+Error: unexpected symbol in "        ylab = Average SBP"
+>         main = "Boxplot comparing systolic blood pressure (SBP) readings obtained via automation and manual application")
+Error: unexpected ')' in "        main = "Boxplot comparing systolic blood pressure (SBP) readings obtained via automation and manual application")"
+> boxplot(bp3$SBP_avg~bp3$Method,
++         col = bp3$Method,
++         xlab = Measurement Method,
+Error: unexpected symbol in:
+"        col = bp3$Method,
+        xlab = Measurement Method"
+>         ylab = Average SBP (mmHg),
+Error: unexpected symbol in "        ylab = Average SBP"
+>         main = "Boxplot comparing systolic blood pressure - SBP - readings obtained via automation and manual application")
+Error: unexpected ')' in "        main = "Boxplot comparing systolic blood pressure - SBP - readings obtained via automation and manual application")"
+> boxplot(bp3$SBP_avg~bp3$Method,
++         col = bp3$Method,
++         xlab = Measurement Method,
+Error: unexpected symbol in:
+"        col = bp3$Method,
+        xlab = Measurement Method"
+>         ylab = Average SBP (mmHg),
+Error: unexpected symbol in "        ylab = Average SBP"
+>         main = "Boxplot comparing systolic blood pressure - SBP - readings obtained via automation and manual application")
+Error: unexpected ')' in "        main = "Boxplot comparing systolic blood pressure - SBP - readings obtained via automation and manual application")"
+> boxplot(bp3$SBP_avg~bp3$Method,
++         col = bp3$Method,
++         xlab = Measurement Method,
+Error: unexpected symbol in:
+"        col = bp3$Method,
+        xlab = Measurement Method"
+>         ylab = Average SBP (mmHg),
+Error: unexpected symbol in "        ylab = Average SBP"
+>         main = "Boxplot comparing systolic blood pressure - SBP - readings obtained via automation and manual application"
+> boxplot(bp3$SBP_avg~bp3$Method,
++         col = bp3$Method,
++         xlab = Measurement Method,
+Error: unexpected symbol in:
+"        col = bp3$Method,
+        xlab = Measurement Method"
+>         ylab = Average SBP *mmHg*,
+Error: unexpected symbol in "        ylab = Average SBP"
+>         main = "Boxplot comparing systolic blood pressure - SBP - readings obtained via automation and manual application"
+> boxplot(bp3$SBP_avg~bp3$Method,
++         col = bp3$Method,
++         xlab = Measurement Method,
+Error: unexpected symbol in:
+"        col = bp3$Method,
+        xlab = Measurement Method"
+>         ylab = Average SBP mmHg,
+Error: unexpected symbol in "        ylab = Average SBP"
+>         main = "Boxplot comparing systolic blood pressure - SBP - readings obtained via automation and manual application"
+> boxplot(bp3$SBP_avg~bp3$Method,
++         col = bp3$Method,
++         xlab = Measurement Method,
+Error: unexpected symbol in:
+"        col = bp3$Method,
+        xlab = Measurement Method"
+>         ylab = Average SBP mmHg,
+Error: unexpected symbol in "        ylab = Average SBP"
+>         main = "Boxplot comparing systolic blood pressure - SBP - readings obtained via automation and manual application")
+Error: unexpected ')' in "        main = "Boxplot comparing systolic blood pressure - SBP - readings obtained via automation and manual application")"
+> boxplot(bp3$SBP_avg~bp3$Method,
++         col = bp3$Method,
++         xlab = Measurement Method,
+Error: unexpected symbol in:
+"        col = bp3$Method,
+        xlab = Measurement Method"
+>         ylab = Average SBP mmHg,
+Error: unexpected symbol in "        ylab = Average SBP"
+>         main = Boxplot comparing systolic blood pressure - SBP - readings obtained via automation and manual application)
+Error: unexpected symbol in "        main = Boxplot comparing"
+> boxplot(bp3$SBP_avg~bp3$Method,
++         col = bp3$Method,
++         xlab = Measurement Method,
+Error: unexpected symbol in:
+"        col = bp3$Method,
+        xlab = Measurement Method"
+>         ylab = Average SBP mmHg,
+Error: unexpected symbol in "        ylab = Average SBP"
+>         main = Boxplot comparing systolic blood pressure SBP readings obtained via automation and manual application)
+Error: unexpected symbol in "        main = Boxplot comparing"
+> boxplot(bp3$SBP_avg~bp3$Method,
++         col == bp3$Method,
++         xlab == Measurement Method,
+Error: unexpected symbol in:
+"        col == bp3$Method,
+        xlab == Measurement Method"
+>         ylab == Average SBP mmHg,
+Error: unexpected symbol in "        ylab == Average SBP"
+>         main == Boxplot comparing systolic blood pressure SBP readings obtained via automation and manual application)
+Error: unexpected symbol in "        main == Boxplot comparing"
+> boxplot(bp3$SBP_avg~bp3$Method,
++         col = bp3$Method,
++         xlab = Measurement Method,
+Error: unexpected symbol in:
+"        col = bp3$Method,
+        xlab = Measurement Method"
+>         ylab = Average SBP mmHg)
+Error: unexpected symbol in "        ylab = Average SBP"
+> boxplot(bp3$SBP_avg~bp3$Method)
+> boxplot(bp3$SBP_avg~bp3$Method,
++         col = bp3$SBP_avg,
++         main = "Boxplot comparing automation- versus manually-obtained systolic blood pressure measurements",
++         xlab = Measurement Method,
+Error: unexpected symbol in:
+"        main = "Boxplot comparing automation- versus manually-obtained systolic blood pressure measurements",
+        xlab = Measurement Method"
+>         ylab = SBP mmHg)
+Error: unexpected symbol in "        ylab = SBP mmHg"
+> ?par
+> ?boxplot
+> boxplot(bp3$SBP_avg~bp3$Method,
++         col = bp3$SBP_avg,
++         main = "Boxplot comparing automation- versus manually-obtained systolic blood pressure measurements",
++         xlab = "Measurement Method",
++         ylab = "SBP mmHg")
+> boxplot(bp3$SBP_avg~bp3$Method,
++         col = bp3$SBP_avg,
++         main = "Boxplot comparing automation- versus manually-obtained systolic blood pressure measurements",
++         xlab = "Measurement Method",
++         ylab = "SBP (mmHg)")
+> boxplot(bp3$SBP_avg~bp3$Method,
++         col = bp3$SBP_avg,
++         main = "Boxplot comparing automation- versus manually-obtained systolic blood pressure (SBP) measurements",
++         xlab = "Measurement Method",
++         ylab = "SBP (mmHg)")
+> t.test(bp3$SBP_avg~bp3$Method,
++        paired = FALSE)
+
+	Welch Two Sample t-test
+
+data:  bp3$SBP_avg by bp3$Method
+t = 3.254, df = 167.82, p-value = 0.001376
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+  6.143176 25.096040
+sample estimates:
+mean in group Device  mean in group Nurse 
+            143.0275             127.4078 
+
+> unpaired.ttest <- t.test(bp3$SBP_avg~bp3$Method,
++        paired = FALSE)
+> View(bp)

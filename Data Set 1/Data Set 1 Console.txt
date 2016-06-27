@@ -1,0 +1,329 @@
+ getwd()
+[1] "C:/Users/BonGanI_2/Documents/STATS STUFF/Assignment 4/Data Set 1/Ass 4 Datae set 1"
+> ls
+function (name, pos = -1L, envir = as.environment(pos), all.names = FALSE, 
+    pattern, sorted = TRUE) 
+{
+    if (!missing(name)) {
+        pos <- tryCatch(name, error = function(e) e)
+        if (inherits(pos, "error")) {
+            name <- substitute(name)
+            if (!is.character(name)) 
+                name <- deparse(name)
+            warning(gettextf("%s converted to character string", 
+                sQuote(name)), domain = NA)
+            pos <- name
+        }
+    }
+    all.names <- .Internal(ls(envir, all.names, sorted))
+    if (!missing(pattern)) {
+        if ((ll <- length(grep("[", pattern, fixed = TRUE))) && 
+            ll != length(grep("]", pattern, fixed = TRUE))) {
+            if (pattern == "[") {
+                pattern <- "\\["
+                warning("replaced regular expression pattern '[' by  '\\\\['")
+            }
+            else if (length(grep("[^\\\\]\\[<-", pattern))) {
+                pattern <- sub("\\[<-", "\\\\\\[<-", pattern)
+                warning("replaced '[<-' by '\\\\[<-' in regular expression pattern")
+            }
+        }
+        grep(pattern, all.names, value = TRUE)
+    }
+    else all.names
+}
+<bytecode: 0x000000000c84dee8>
+<environment: namespace:base>
+> ls()
+character(0)
+> library(dplyr)
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+Warning message:
+package ‘dplyr’ was built under R version 3.3.1 
+> library(tidyr)
+Warning message:
+package ‘tidyr’ was built under R version 3.3.1 
+> library(ggplot2)
+Warning message:
+package ‘ggplot2’ was built under R version 3.3.1 
+> mydf <- read.csv("ckwts.csv", stringsAsFactors = FALSE)
+> dim("mydf")
+NULL
+> dim(mydf)
+[1] 71  2
+> ckwts <- tbl_df(mydf)
+> rm(mydf)
+> tbl_df
+function (data) 
+{
+    assert_that(is.data.frame(data))
+    as_data_frame(data)
+}
+<environment: namespace:dplyr>
+> ckwts
+Source: local data frame [71 x 2]
+
+   weight      feed
+    <int>     <chr>
+1     179 horsebean
+2     160 horsebean
+3     136 horsebean
+4     227 horsebean
+5     217 horsebean
+6     168 horsebean
+7     108 horsebean
+8     124 horsebean
+9     143 horsebean
+10    140 horsebean
+..    ...       ...
+> select(ckwts, feed)
+Source: local data frame [71 x 1]
+
+        feed
+       <chr>
+1  horsebean
+2  horsebean
+3  horsebean
+4  horsebean
+5  horsebean
+6  horsebean
+7  horsebean
+8  horsebean
+9  horsebean
+10 horsebean
+..       ...
+> View(ckwts)
+> filter(ckwts, feed = 'horsebean', feed = 'linseed', feed = 'soybean', feed = 'sunflower', feed = 'meat meal', feed = 'casein')
+Error: incompatible expression in filter
+> filter(ckwts, feed == 'horsebean', feed == 'linseed', feed == 'soybean', feed == 'sunflower', feed == 'meat meal', feed == 'casein')
+Source: local data frame [0 x 2]
+
+Variables not shown: weight <int>, feed <chr>.
+> new.df <- filter(ckwts, feed == 'horsebean', feed == 'linseed', feed == 'soybean', feed == 'sunflower', feed == 'meat meal', feed == 'casein')
+> View(new.df)
+> rm(new.df)
+> filter(ckwts, feed == "horsebean")
+Source: local data frame [10 x 2]
+
+   weight      feed
+    <int>     <chr>
+1     179 horsebean
+2     160 horsebean
+3     136 horsebean
+4     227 horsebean
+5     217 horsebean
+6     168 horsebean
+7     108 horsebean
+8     124 horsebean
+9     143 horsebean
+10    140 horsebean
+> x
+Error: object 'x' not found
+> ckwts
+Source: local data frame [71 x 2]
+
+   weight      feed
+    <int>     <chr>
+1     179 horsebean
+2     160 horsebean
+3     136 horsebean
+4     227 horsebean
+5     217 horsebean
+6     168 horsebean
+7     108 horsebean
+8     124 horsebean
+9     143 horsebean
+10    140 horsebean
+..    ...       ...
+> ?mutate
+> View(ckwts)
+> ckwts2 <- mutate(ckwts, horsebean = filter(ckwts, weight, feed == "horsebean"))
+Error: incompatible expression in filter
+> ckwts2 <- mutate(ckwts, horsebean = filter(ckwts, weight, feed == "horsebean"))
+Error: incompatible expression in filter
+> horsebean.df <- filter(ckwts, weight >= 108, feed == "horsebean")
+> horsebean.df
+Source: local data frame [10 x 2]
+
+   weight      feed
+    <int>     <chr>
+1     179 horsebean
+2     160 horsebean
+3     136 horsebean
+4     227 horsebean
+5     217 horsebean
+6     168 horsebean
+7     108 horsebean
+8     124 horsebean
+9     143 horsebean
+10    140 horsebean
+> horsebean.df <- filter(ckwts, weight >= 108, feed == "horsebean")
+> ckwts2 <- mutate(ckwts, horsebean == filter(ckwts, weight, feed == "horsebean"))
+Error: object 'horsebean' not found
+> ckwts2 <- mutate(ckwts, horsebean == filter(ckwts, weight >= 108, feed == "horsebean"))
+Error: object 'horsebean' not found
+> ?mutate
+> select(horsebean.df, -(feed))
+Source: local data frame [10 x 1]
+
+   weight
+    <int>
+1     179
+2     160
+3     136
+4     227
+5     217
+6     168
+7     108
+8     124
+9     143
+10    140
+> new.horsebean <- select(horsebean.df, -(feed))
+> new.horsebean
+Source: local data frame [10 x 1]
+
+   weight
+    <int>
+1     179
+2     160
+3     136
+4     227
+5     217
+6     168
+7     108
+8     124
+9     143
+10    140
+> rm(horsebean.df)
+> ckwts2 <- mutate(ckwts, horsebean == new.horsebean)
+Error: object 'horsebean' not found
+> ckwts2 <- mutate(ckwts, "horsebean" == new.horsebean)
+Error: wrong result size (10), expected 71 or 1
+> ?rm
+> ckwts2 <- mutate(ckwts, horsebean == weight(c(179, 160, 136, 227, 217, 168, 108, 124, 143, 140))
++ 
++ ckwts2 <- mutate(ckwts, horsebean == weight(c(179, 160, 136, 227, 217, 168, 108, 124, 143, 140))
+Error: unexpected symbol in:
+"
+ckwts2"
+> ckwts2 <- mutate(ckwts, horsebean == filter(ckwts, weight >= 108, feed == "horsebean"))
+Error: object 'horsebean' not found
+> ckwts2 <- mutate(ckwts, "horsebean" == filter(ckwts, weight >= 108, feed == "horsebean"))
+Error: wrong result size (20), expected 71 or 1
+> ckwts2 <- mutate(ckwts, "horsebean" == filter(ckwts, weight >= 108, feed == "horsebean", -(feed)))
+Error: invalid argument to unary operator
+> ckwts2 <- mutate(ckwts, "horsebean" == filter(ckwts, weight >= 108, feed == "horsebean", -feed))
+Error: invalid argument to unary operator
+> ckwts2 <- mutate(ckwts, "horsebean" == select(ckwts, weight >= 108, feed == "horsebean", -feed))
+Error: invalid argument to unary operator
+> ckwts2 <- mutate(ckwts, "horsebean" == select(ckwts, weight >= 108, feed == "horsebean"))
+Error: All select() inputs must resolve to integer column positions.
+The following do not:
+*  c(179L, 160L, 136L, 227L, 217L, 168L, 108L, 124L, 143L, 1...
+*  c("horsebean", "horsebean", "horsebean", "horsebean", "ho...
+> ckwts2 <- mutate(ckwts, "horsebean" == select(new.horsebean))
+Error: 'data' must be of a vector type, was 'NULL'
+> ckwts2 <- mutate(ckwts, "horsebean" == select(new.horsebean, weights))
+Error: All select() inputs must resolve to integer column positions.
+The following do not:
+*  function (object, ...) ...
+> ?rename
+> rename(ckwts, "horsebean" = 1)
+Error: Arguments to rename must be unquoted variable names. Arguments horsebean are not.
+> rename(ckwts, horsebean = 1)
+Error: Arguments to rename must be unquoted variable names. Arguments horsebean are not.
+> ckwts
+Source: local data frame [71 x 2]
+
+   weight      feed
+    <int>     <chr>
+1     179 horsebean
+2     160 horsebean
+3     136 horsebean
+4     227 horsebean
+5     217 horsebean
+6     168 horsebean
+7     108 horsebean
+8     124 horsebean
+9     143 horsebean
+10    140 horsebean
+..    ...       ...
+> spread(ckwts, feed, -weight)
+Error: Invalid column specification
+> spread(ckwts, feed)
+Error: Please supply column name
+> spread(ckwts, feed, weight)
+Error: Duplicate identifiers for rows (60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71), (1, 2, 3, 4, 5, 6, 7, 8, 9, 10), (11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22), (49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59), (23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36), (37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48)
+> spread(ckwts, -weight, feed)
+Error: Invalid column specification
+> ?boxplot
+> boxplot(ckwts$feed)
+Error in x[floor(d)] + x[ceiling(d)] : 
+  non-numeric argument to binary operator
+> ?barplot
+> ?qplot
+> ckwts
+Source: local data frame [71 x 2]
+
+   weight      feed
+    <int>     <chr>
+1     179 horsebean
+2     160 horsebean
+3     136 horsebean
+4     227 horsebean
+5     217 horsebean
+6     168 horsebean
+7     108 horsebean
+8     124 horsebean
+9     143 horsebean
+10    140 horsebean
+..    ...       ...
+> boxplot(weight$feed, )
+Error in boxplot(weight$feed, ) : object 'weight' not found
+> boxplot(weight$feed,
++         data = ckwts)
+Error in boxplot(weight$feed, data = ckwts) : object 'weight' not found
+> boxplot('weight'$'feed',
++         data = ckwts)
+Error in "weight"$feed : $ operator is invalid for atomic vectors
+> boxplot(ckwts)
+Error in x[floor(d)] + x[ceiling(d)] : 
+  non-numeric argument to binary operator
+> ?boxplot
+> boxplot(weight$ckwts, feed$ckwts)
+Error in boxplot(weight$ckwts, feed$ckwts) : object 'weight' not found
+> boxplot(weight$ckwts~feed$ckwts)
+Error in eval(expr, envir, enclos) : object 'weight' not found
+> boxplot(ckwts$weight~ckwts$feed,
++         col = "red")
+> View(ckwts)
+>         main = "Boxplot illustrating the weights of chicks solely on casein, horsebean, linseed, soybean, and sunflower diets",
+Error: unexpected ',' in "        main = "Boxplot illustrating the weights of chicks solely on casein, horsebean, linseed, soybean, and sunflower diets","
+>         xlab = "Feed",
+Error: unexpected ',' in "        xlab = "Feed","
+> boxplot(ckwts$weight~ckwts$feed,
++         col = "red",
++         main = "Boxplot illustrating the wweights of chicks fed with diets comprising solely of casein, horsebean, linseed, meatmeal, soybean, and sunflower",
++         xlab = "Feed",
++         ylab = "Weight (g)")
+> mean(ckwts)
+[1] NA
+Warning message:
+In mean.default(ckwts) : argument is not numeric or logical: returning NA
+> boxplot <- boxplot(ckwts$weight~ckwts$feed,
++         col = "red",
++         main = "Boxplot illustrating the wweights of chicks fed with diets comprising solely of casein, horsebean, linseed, meatmeal, soybean, and sunflower",
++         xlab = "Feed",
++         ylab = "Weight (g)")
+> boxplot(ckwts$weight~ckwts$feed,
+boxplot(ckwts$weight~ckwts$feed,
