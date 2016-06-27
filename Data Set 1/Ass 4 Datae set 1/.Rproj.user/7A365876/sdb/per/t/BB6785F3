@@ -1,0 +1,28 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1467036605999.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "BB6785F3",
+    "lastKnownWriteTime" : 3346849034865213440,
+    "last_content_update" : 1467036605999,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "ewhjcqqzqx",
+        "caption" : "ckwts",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=ckwts&cache_key=ewhjcqqzqx",
+        "displayedObservations" : 71,
+        "environment" : "",
+        "object" : "ckwts",
+        "totalObservations" : 71,
+        "variables" : 2
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}
