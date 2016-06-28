@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "tor\"Patient\",\"Nausea_before\",\"Nausea_after\"\n1,3,2\n2,4,0\n3,6,1\n4,2,3\n5,2,1\n6,4,1\n7,5,0\n8,6,40\n",
+    "created" : 1467068963555.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "676013685",
+    "id" : "352E67C9",
+    "lastKnownWriteTime" : 1467079465,
+    "last_content_update" : 1467079465728,
+    "path" : "~/STATS STUFF/Assignment 4/Data Set 4/Nausea Data Set 4/nausea.csv",
+    "project_path" : "nausea.csv",
+    "properties" : {
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "text"
+}

@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "#crosstabulate \n> table(gastro$Consumption~gastro$Outcome)\nError in unique.default(x, nmax = nmax) : \n  unique() applies only to vectors\n> table(gastro$Consumption, gastro$Outcome)\n\nill not ill\n< 1 glasses/day     39     121\n< 4 glasses/day    265     146\n1 to 4 glasses/day 265     258\n> #Make a vector of the table\n  > xtable <- table(gastro$Consumption, gastro$Outcome)\n> xtable\n\nill not ill\n< 1 glasses/day     39     121\n< 4 glasses/day    265     146\n1 to 4 glasses/day 265     258\n> #make a data frame, using dplyr, for easier printing.\n  > gastro.df <- tbl_df(xtable)\nError: could not find function \"tbl_df\"\n> gastro.df <- tbl_df(\"xtable\")\nError: could not find function \"tbl_df\"\n> gastro.df <- tbl_df(gastro)\nError: could not find function \"tbl_df\"\n> rm(gastro)\n> rm(xtable)\n> mydf <- read.csv(\"gastroenteritis.csv\", stringsAsFactors = FALSE)\n> dim(mydf)\n[1] 1094    2\n> gastro.df <- tbl_df(mydf)\nError: could not find function \"tbl_df\"\n> gastro.df <- tbl_df(\"mydf\")\nError: could not find function \"tbl_df\"\n> library(dplyr)\n\nAttaching package: ‘dplyr’\n\nThe following objects are masked from ‘package:stats’:\n  \n  filter, lag\n\nThe following objects are masked from ‘package:base’:\n  \n  intersect, setdiff, setequal, union\n\nWarning message:\n  package ‘dplyr’ was built under R version 3.3.1 \n> library(tidyr)\nWarning message:\n  package ‘tidyr’ was built under R version 3.3.1 \n> library(ggplot2)\nWarning message:\n  package ‘ggplot2’ was built under R version 3.3.1 \n> gastro.df <- tbl_df(mydf)\n> rm(mydf)\n> View(gastro.df)\n> #Make a contingency table\n  > table(gastro.df$Consumption, gastro.df$Outcome)\n\nill not ill\n< 1 glasses/day     39     121\n< 4 glasses/day    265     146\n1 to 4 glasses/day 265     258\n> #make a factor of the table\n  > xtable <- table(gastro.df$Consumption, gastro.df$Outcome)\n> #print new factor\n  > xtable\n\nill not ill\n< 1 glasses/day     39     121\n< 4 glasses/day    265     146\n1 to 4 glasses/day 265     258\n> #Use the 'xtabs' function with the COUNT on the left of the formula\n  > #ignore the above\n  > ",
+    "created" : 1467079407681.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2560477760",
+    "id" : "2E2AEFA2",
+    "lastKnownWriteTime" : 1467079420,
+    "last_content_update" : 1467079420041,
+    "path" : "~/STATS STUFF/Assignment 4/Data Set 3/The Hot Zone Data set 3/Notes.R",
+    "project_path" : "Notes.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
