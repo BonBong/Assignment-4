@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "---\ntitle: \"Assignment 4 Data Set 4\"\nauthor: \"Bongani Mveng\"\ndate: \"4 July 2016\"\noutput: word_document\n---\n#Null Hypothesis\n* There is no relationship between consumption of contaminated water and presentation with gastroenteritis.\n\n#Alernative Hypothesis\n* Consumption of contaminated water causes gastroenteritis.\n\n#Statistical Test\n* Pearson's Chi-sqaure test & Fischer's Exact Test\n* X-squared = 74.925, df = 2, p-value < 2.2e-16\n\n###Test Asumptions:\n* random samping\n* independent observations\n* large sample size\n* discrete probablity in observed frequencies within the table can be estimated by the continuous X^2^ distribution\n\n#Outcome Analysis\n* The p-value indicates that a relationship exists between the amount of contaminated water consumed and whether or not and idividual presented with gastroenteritis. Fischer's Exact test states that the alternative hypothesis is two-sided. \n\n",
+    "created" : 1467644581376.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "19547884",
+    "id" : "BEA15913",
+    "lastKnownWriteTime" : 1467646598,
+    "last_content_update" : 1467646598772,
+    "path" : "~/STATS STUFF/Assignment 4/Data Set 3/The Hot Zone Data set 3/Assignment 4 DAta Set 4.Rmd",
+    "project_path" : "Assignment 4 DAta Set 4.Rmd",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

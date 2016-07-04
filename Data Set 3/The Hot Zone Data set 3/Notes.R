@@ -73,4 +73,35 @@ ill not ill
 1 to 4 glasses/day 265     258
 > #Use the 'xtabs' function with the COUNT on the left of the formula
   > #ignore the above
-  > 
+  > #cross tabulate with xtabs
+  > xtabs(~Consumption + Outcome,
+          +       data = gastro.df)
+Outcome
+Consumption          ill not ill
+< 1 glasses/day     39     121
+< 4 glasses/day    265     146
+1 to 4 glasses/day 265     258
+> xtable2 <- xtabs(~Consumption + Outcome,
+                   +                  data = gastro.df)
+> xtable2
+Outcome
+Consumption          ill not ill
+< 1 glasses/day     39     121
+< 4 glasses/day    265     146
+1 to 4 glasses/day 265     258
+ChiSqTest <- chisq.test(xtable2, correct = FALSE)
+> ChiSqTest
+
+Pearson's Chi-squared test
+
+data:  xtable2
+X-squared = 74.925, df = 2, p-value < 2.2e-16
+
+> Fisch <- fisher.test(xtable2)
+> Fisch
+
+Fisher's Exact Test for Count Data
+
+data:  xtable2
+p-value < 2.2e-16
+alternative hypothesis: two.sided

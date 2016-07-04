@@ -174,3 +174,71 @@ Deg. of Freedom        5        65
 
 Residual standard error: 54.85029
 Estimated effects may be unbalanced
+> head(ckwts)
+weight      feed
+1    179 horsebean
+2    160 horsebean
+3    136 horsebean
+4    227 horsebean
+5    217 horsebean
+6    168 horsebean
+> foo <- aov(weight~feed,
+             +            data = ckwts)
+> summary(foo)
+Df Sum Sq Mean Sq F value   Pr(>F)    
+feed         5 231129   46226   15.37 5.94e-10 ***
+  Residuals   65 195556    3009                     
+---
+  Signif. codes:  
+  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+> #Need to correct p valuefor multiple comparisons so as to avoid Type 1 error:
+  > pairwise.t.test(ckwts$weight, ckwts$feed, 
+                    +                 p.adjust.method = 'bonferroni',
+                    +                 paired = FALSE)
+
+Pairwise comparisons using t tests with pooled SD 
+
+data:  ckwts$weight and ckwts$feed 
+
+casein  horsebean linseed meatmeal soybean
+horsebean 3.1e-08 -         -       -        -      
+  linseed   0.00022 0.22833   -       -        -      
+  meatmeal  0.68350 0.00011   0.20218 -        -      
+  soybean   0.00998 0.00487   1.00000 1.00000  -      
+  sunflower 1.00000 1.2e-08   9.3e-05 0.39653  0.00447
+
+P value adjustment method: bonferroni 
+> bonferroni <- pairwise.t.test(ckwts$weight, ckwts$feed,
+                                +                               p.adjust.method = 'bonferroni',
+                                +                               paired = FALSE)
+> bonferroni
+
+Pairwise comparisons using t tests with pooled SD 
+
+data:  ckwts$weight and ckwts$feed 
+
+casein  horsebean linseed meatmeal soybean
+horsebean 3.1e-08 -         -       -        -      
+  linseed   0.00022 0.22833   -       -        -      
+  meatmeal  0.68350 0.00011   0.20218 -        -      
+  soybean   0.00998 0.00487   1.00000 1.00000  -      
+  sunflower 1.00000 1.2e-08   9.3e-05 0.39653  0.00447
+
+P value adjustment method: bonferroni 
+> holm <- pairwise.t.test(ckwts$weight, ckwts$feed,
+                          +                         p.adjust.method = 'holm',
+                          +                         paired = FALSE)
+> holm
+
+Pairwise comparisons using t tests with pooled SD 
+
+data:  ckwts$weight and ckwts$feed 
+
+casein  horsebean linseed meatmeal soybean
+horsebean 2.9e-08 -         -       -        -      
+  linseed   0.00016 0.09435   -       -        -      
+  meatmeal  0.18227 9.0e-05   0.09435 -        -      
+  soybean   0.00532 0.00298   0.51766 0.51766  -      
+  sunflower 0.81249 1.2e-08   8.1e-05 0.13218  0.00298
+
+P value adjustment method: holm

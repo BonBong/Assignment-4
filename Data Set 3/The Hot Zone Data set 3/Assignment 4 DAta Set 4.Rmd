@@ -1,0 +1,25 @@
+---
+title: "Assignment 4 Data Set 4"
+author: "Bongani Mveng"
+date: "4 July 2016"
+output: word_document
+---
+#Null Hypothesis
+* There is no relationship between consumption of contaminated water and presentation with gastroenteritis.
+
+#Alernative Hypothesis
+* Consumption of contaminated water causes gastroenteritis.
+
+#Statistical Test
+* Pearson's Chi-sqaure test & Fischer's Exact Test
+* X-squared = 74.925, df = 2, p-value < 2.2e-16
+
+###Test Asumptions:
+* random samping
+* independent observations
+* large sample size
+* discrete probablity in observed frequencies within the table can be estimated by the continuous X^2^ distribution
+
+#Outcome Analysis
+* The p-value indicates that a relationship exists between the amount of contaminated water consumed and whether or not and idividual presented with gastroenteritis. Fischer's Exact test states that the alternative hypothesis is two-sided. 
+
