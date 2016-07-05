@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "---\ntitle: \"Assignment 4 Data Set 1\"\nauthor: \"Bongani Mveng\"\ndate: \"5 July 2016\"\noutput: word_document\n---\n\n#Null Hypothesis\n* No relationship exists between type of feed supplement and chick weight. \n\n#Alternative Hypothesis\n* A relationship exists between the type of feed supplement and chick weight, with that most resemblant of the wild type nutrient promoting the most growth. \n\n#Statistical Test\n* ANOVA with a bonferroni correction for pairwise comparisons \n* Df Sum Sq Mean Sq F value   Pr(>F)    \nfeed         5 231129   46226   15.37 5.94e-10 ***\nResiduals   65 195556    3009                     \n---\nSignif. codes:  \n0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1\n* casein  horsebean linseed meatmeal soybean\nhorsebean 3.1e-08 -         -       -        -      \nlinseed   0.00022 0.22833   -       -        -      \nmeatmeal  0.68350 0.00011   0.20218 -        -      \nsoybean   0.00998 0.00487   1.00000 1.00000  -      \nsunflower 1.00000 1.2e-08   9.3e-05 0.39653  0.00447\n\n###Test Assumptions\n* Gaussian distribution\n* Equal Variance amongst groups\n* Independent errors\n* Data are unmatched\n\n#Outcome Analysis\n* Casein promotes the most growth out of all the feed supplements, while horsebean promotes the leasts. There is no statistical difference between casien, meatmeal, and sunflower supplements, suggesting that these latter two supplements are as statistically efficient in promoting growth. However, this does not signify biological efficiency.\n\n",
+    "created" : 1467677438234.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "4104088002",
+    "id" : "264D50E4",
+    "lastKnownWriteTime" : 1467680985,
+    "last_content_update" : 1467680985505,
+    "path" : "~/STATS STUFF/Assignment 4/Data Set 1/Ass 4 Datae set 1/Data Set 1 Write-up.Rmd",
+    "project_path" : "Data Set 1 Write-up.Rmd",
+    "properties" : {
+        "docOutlineVisible" : "0",
+        "tempName" : "Untitled2"
+    },
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

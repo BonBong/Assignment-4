@@ -1,4 +1,5 @@
 qplot(feed, weight, data = ckwts, geom = "boxplot")
+
 > ?qplot
 > qplot(feed, weight, data = ckwts, geom = "boxplot", ylab = "Weight (g)", xlab = "Feed")
 > qplot(weight, data = ckwts, facets = feed ~., binwidth =2)

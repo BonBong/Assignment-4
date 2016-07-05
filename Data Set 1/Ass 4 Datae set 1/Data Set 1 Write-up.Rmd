@@ -1,0 +1,37 @@
+---
+title: "Assignment 4 Data Set 1"
+author: "Bongani Mveng"
+date: "5 July 2016"
+output: word_document
+---
+
+#Null Hypothesis
+* No relationship exists between type of feed supplement and chick weight. 
+
+#Alternative Hypothesis
+* A relationship exists between the type of feed supplement and chick weight, with that most resemblant of the wild type nutrient promoting the most growth. 
+
+#Statistical Test
+* ANOVA with a bonferroni correction for pairwise comparisons 
+* Df Sum Sq Mean Sq F value   Pr(>F)    
+feed         5 231129   46226   15.37 5.94e-10 ***
+Residuals   65 195556    3009                     
+---
+Signif. codes:  
+0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+* casein  horsebean linseed meatmeal soybean
+horsebean 3.1e-08 -         -       -        -      
+linseed   0.00022 0.22833   -       -        -      
+meatmeal  0.68350 0.00011   0.20218 -        -      
+soybean   0.00998 0.00487   1.00000 1.00000  -      
+sunflower 1.00000 1.2e-08   9.3e-05 0.39653  0.00447
+
+###Test Assumptions
+* Gaussian distribution
+* Equal Variance amongst groups
+* Independent errors
+* Data are unmatched
+
+#Outcome Analysis
+* Casein promotes the most growth out of all the feed supplements, while horsebean promotes the leasts. There is no statistical difference between casien, meatmeal, and sunflower supplements, suggesting that these latter two supplements are as statistically efficient in promoting growth. However, this does not signify biological efficiency.
+

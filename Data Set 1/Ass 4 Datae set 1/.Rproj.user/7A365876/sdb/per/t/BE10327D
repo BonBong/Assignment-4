@@ -1,14 +1,14 @@
 {
     "collab_server" : "",
-    "contents" : "qplot(feed, weight, data = ckwts, geom = \"boxplot\")\n> ?qplot\n> qplot(feed, weight, data = ckwts, geom = \"boxplot\", ylab = \"Weight (g)\", xlab = \"Feed\")\n> qplot(weight, data = ckwts, facets = feed ~., binwidth =2)\n> qplot(weight, data = ckwts, facets = feed ~., binwidth =2, main = \"Histogram of neonate chick weights per feed type\")",
+    "contents" : "qplot(feed, weight, data = ckwts, geom = \"boxplot\")\n\n> ?qplot\n> qplot(feed, weight, data = ckwts, geom = \"boxplot\", ylab = \"Weight (g)\", xlab = \"Feed\")\n> qplot(weight, data = ckwts, facets = feed ~., binwidth =2)\n> qplot(weight, data = ckwts, facets = feed ~., binwidth =2, main = \"Histogram of neonate chick weights per feed type\")\n",
     "created" : 1467284557200.000,
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "2017871663",
+    "hash" : "825701621",
     "id" : "BE10327D",
-    "lastKnownWriteTime" : 1467286219,
-    "last_content_update" : 1467286219263,
+    "lastKnownWriteTime" : 1467681067,
+    "last_content_update" : 1467681067779,
     "path" : "~/STATS STUFF/Assignment 4/Data Set 1/Ass 4 Datae set 1/qplot code.R",
     "project_path" : "qplot code.R",
     "properties" : {
