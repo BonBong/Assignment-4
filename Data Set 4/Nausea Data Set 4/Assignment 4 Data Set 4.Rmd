@@ -1,0 +1,25 @@
+---
+title: "Assignment 4 Data Set 4"
+author: "Bongani Mveng"
+date: "5 July 2016"
+output: word_document
+---
+
+#Null Hypothesis
+* Administration of 5HT3 receptor antagonist does not ameliorate nausea intensity
+
+#Alternative Hypothesis
+* Administration of 5HT3 receptor antagonist decreases nausea intensity. 
+
+#Statistical Test
+* paired t-test
+* t = 3.3072, df = 7, p-value = 0.01299
+
+###Test Asssumptions
+* Gaussian distribution
+* equal variance amongst groups
+* independent errors
+* effective data matching
+
+#Outcome Analysis
+* Ratings of nausea intensity significantly decreased following adminisatration of the 5HT3 receptor antagonist. 

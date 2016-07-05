@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "---\ntitle: \"Assignment 4 Data Set 4\"\nauthor: \"Bongani Mveng\"\ndate: \"5 July 2016\"\noutput: word_document\n---\n\n#Null Hypothesis\n* Administration of 5HT3 receptor antagonist does not ameliorate nausea intensity\n\n#Alternative Hypothesis\n* Administration of 5HT3 receptor antagonist decreases nausea intensity. \n\n#Statistical Test\n* paired t-test\n* t = 3.3072, df = 7, p-value = 0.01299\n\n###Test Asssumptions\n* Gaussian distribution\n* equal variance amongst groups\n* independent errors\n* effective data matching\n\n#Outcome Analysis\n* Ratings of nausea intensity significantly decreased following adminisatration of the 5HT3 receptor antagonist. ",
+    "created" : 1467682647404.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2630587275",
+    "id" : "7297DBB6",
+    "lastKnownWriteTime" : 1467683245,
+    "last_content_update" : 1467683245420,
+    "path" : "~/STATS STUFF/Assignment 4/Data Set 4/Nausea Data Set 4/Assignment 4 Data Set 4.Rmd",
+    "project_path" : "Assignment 4 Data Set 4.Rmd",
+    "properties" : {
+        "tempName" : "Untitled2"
+    },
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}
