@@ -1,0 +1,25 @@
+---
+title: "Assignment 4 Data Set 2 Write-up"
+author: "Bongani Mveng"
+date: "5 July 2016"
+output: word_document
+---
+
+#Null Hypothesis
+* There is no significant difference between the automated and manual measurement of average SBP.
+
+#Alternative Hypothesis
+* There is a significant difference between th automated and manula measurement of average SBP.
+
+#Statistical Test
+* unpaired t.test
+* t = 3.254, df = 167.82, p-value = 0.001376
+
+##Test Assumptions
+* Gaussian Distribution
+* Equal variance amongst the groups
+* The errors are independent
+* Data are umatched
+
+#Outcome Analysis
+* The true difference in the means is not equal to 0,and therefore we can reject the null hypothesis. The average SBP measurements are 143.03 and 127.41 for automated and manual measurements respectively. Although the test tells us that the average SBP measurement methods are statistically different, we can not know which is over- or under-reading with respect to the other. 

@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "---\ntitle: \"Assignment 4 Data Set 1 Write-up\"\nauthor: \"Bongani Mveng\"\ndate: \"4 July 2016\"\noutput: html_document\n---\n#Null Hypothesis\n* There is any relationship between the type of chick feed supplement and chick weight.\n\n#Alternative Hypothesis\n* There is a positive relatioship between the type of chick feed supplement and chick weight, with that most representative of the wild type feed being the most beneficial.\n\n#Statistical Test\n* ",
+    "created" : 1467647232060.000,
+    "dirty" : true,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "2603959076",
+    "id" : "BCAF206A",
+    "lastKnownWriteTime" : 236651376,
+    "last_content_update" : 1467647551091,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

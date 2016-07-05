@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "---\ntitle: \"Assignment 4 Data Set 2 Write-up\"\nauthor: \"Bongani Mveng\"\ndate: \"5 July 2016\"\noutput: word_document\n---\n\n#Null Hypothesis\n* There is no significant difference between the automated and manual measurement of average SBP.\n\n#Alternative Hypothesis\n* There is a significant difference between th automated and manula measurement of average SBP.\n\n#Statistical Test\n* unpaired t.test\n* t = 3.254, df = 167.82, p-value = 0.001376\n\n##Test Assumptions\n* Gaussian Distribution\n* Equal variance amongst the groups\n* The errors are independent\n* Data are umatched\n\n#Outcome Analysis\n* The true difference in the means is not equal to 0,and therefore we can reject the null hypothesis. The average SBP measurements are 143.03 and 127.41 for automated and manual measurements respectively. Although the test tells us that the average SBP measurement methods are statistically different, we can not know which is over- or under-reading with respect to the other. ",
+    "created" : 1467675621681.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3882621862",
+    "id" : "E87B2C20",
+    "lastKnownWriteTime" : 1467677075,
+    "last_content_update" : 1467677075503,
+    "path" : "~/STATS STUFF/Assignment 4/Data Set 2/Ass 4 data set 2/Assignment 4 Data Set 2.Rmd",
+    "project_path" : "Assignment 4 Data Set 2.Rmd",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}
